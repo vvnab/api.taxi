@@ -1,4 +1,4 @@
-#vsegda REST api
+#vsegda REST api v1.01
 
 На сайте api.vsegda.cab(ru) будет поднят REST API для взаимодействия с __Информационной Системой Такси (ИСТ)__
 
