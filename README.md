@@ -8,47 +8,51 @@
 
 ###Данные в каждом заголовке HTTP запроса
     Content-Type: application/json
-	Content-Language: язык возвращаемых данных
-	Authorization: Token ####  // токен
+	Content-Language: язык возвращаемых данных // не работает
     Cookie: sessionid=###### // id сессии
 
 ### Регистрация/вход классическая схема
 
-####изменение учётных данных
+####Вход, изменение учётных данных
     
-    URL: /v1/Users/
+    URL: /v1/User/
     
-    method PUT: {
+    method POST: { // - вход при помощи логина/пароля
+        "tel": "9128649400",
+        "pwd": "5ghJgs3"
+    }
+    
+    success: {
+        ... // данные пользователя
+    }
+    
+    error: {
+        "code": 1,
+        "detail": "Сообщение об ошибке"
+    }
+
+    method PUT: { // изменение учётных данных
         "nme": "9128649400",
         "pwd": "5ghJgs3"
-        "xml": {
-            "email": "user@mail.com",
-            "birthday": "1980-02-29",
-            "gender": "женск."
-            "name": {
-                "value": "Полное имя",
-                "first": "Имя",
-                "middle": "Отчество",
-                "last": "Фамилия"
+        "email": "user@mail.com",
+        "birthday": "1980-02-29",
+        "gender": "женск."
+        "name": {
+            "value": "Полное имя",
+            "first": "Имя",
+            "middle": "Отчество",
+            "last": "Фамилия"
+        },
+        "adds": [
+            {
+                "value": "наименование",
+                "twn_id": "id города",
+                "stt": "Улица",
+                "hse": "Дом",
+                "ent": "Куда подъехать"
             },
-            "tels": [
-                {
-                    "tel": "912..."
-                    "value": "наименование"
-                },
-                ...
-            ],
-            "adds": [
-                {
-                    "value": "наименование",
-                    "twn_id": "id города",
-                    "stt": "Улица",
-                    "hse": "Дом",
-                    "ent": "Куда подъехать"
-                },
-                ...
-            ]
-        }
+            ...
+        ]
     }
     
     success: {
@@ -57,7 +61,7 @@
     }
 
     error: {
-        "code": 1,
+        "code": #,
         "detail": "Сообщение об ошибке"
     }
 
@@ -90,23 +94,13 @@
     }
     
     error: {
-        "code": 1,
+        "code": #,
         "detail": "Сообщение об ошибке"
     }
     
-
-####Вход на сайт
-
-    URL: /v1/Users/Login/
+    method DELETE - выход
     
-    method POST: {
-        "nme": "S.Petrov",
-        "pwd": "5ghJgs3"
-    }
-    
-    success: {
-        "token": "0o2qui2nq0bjdq467j3wkego9z335u2v"
-    }
+    success: 'ok'
     
     error: {
         "code": 1,
@@ -121,6 +115,7 @@
     
     method POST: {
         "tel": "9128649589", // 10-значный номер телефона
+        "nme": "название", // для последующей привязки к аккаунту
         "method: "sms|phone" // метод отсылки PIN кода
     }
     генерируется и отправляется PIN код на указанный номер телефона
@@ -134,14 +129,12 @@
 
 ####Проверка PIN
 
-    URL: /v1/PIN/:pin
+    URL: /v1/PIN/:pin/
     
     method GET
-    GET params:
-    	!tel: "9128649589" // номер телефона
     
     success: {
-		"token": "0o2qui2nq0bjdq467j3wkego9z335u2v"
+		... // данные пользователя
     }
 
     - если пользователь новый, заводится аккаунт + привязывается указанный номер телефона, 
