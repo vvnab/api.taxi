@@ -1,4 +1,4 @@
-#vsegda REST api v1.04
+#vsegda REST api v1.05
 
 На сайте http://api.taxi21.ru поднят REST API для взаимодействия с __Информационной Системой Такси (ИСТ)__
 
