@@ -1,5 +1,5 @@
-#vsegda REST api v1.14
-##(2015-07-07 12:14:00)
+#vsegda REST api v1.15
+##(2015-07-09 15:07:00)
 
 На сайте http://api.taxi21.ru поднят REST API для взаимодействия с __Информационной Системой Такси (ИСТ)__
 
@@ -563,6 +563,37 @@
         "code": 1,
         "detail": "Сообщение об ошибке"
     }
+
+####Обратное геокодирование
+    
+    URL: /v1/ReverseLocation/
+    
+    GET params:
+            lat: 0.00, // широта
+            lat: 0.00, // долгота
+            zoom: 11, // 11 для города
+            addressdetails: 1,
+            accept-language: ru
+
+
+    success: {
+            "place_id": "100430",
+            "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright",
+            "osm_type": "node",
+            "osm_id": "191650708",
+            "lat": "61.6689734",
+            "lon": "50.834958",
+            "display_name": "Сыктывкар, городской округ Сыктывкар, Республика Коми, 167000, Россия",
+            "address": {
+                "city": "Сыктывкар",
+                "county": "городской округ Сыктывкар",
+                "state": "Республика Коми",
+                "postcode": "167000",
+                "country": "Россия",
+                "country_code": "ru"
+            }
+        }    
+
 
 ----------
 
