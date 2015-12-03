@@ -10,7 +10,7 @@
 ###Данные в каждом заголовке HTTP запроса
     Content-Type: application/json
 	Content-Language: язык возвращаемых данных // не работает
-    Cookie: sessionid=###### // id сессии
+    sessionid: ###### // id сессии
     Apikey: ######################## // key
 
 ### Регистрация/вход классическая схема
